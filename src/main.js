@@ -5,6 +5,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config';
 import Theme from '@primevue/themes/aura';
+import AnimateOnScroll from 'primevue/animateonscroll';
+
 
 import home from './views/home.vue'
 import categories from './views/categories.vue'
@@ -24,6 +26,7 @@ const router = createRouter({
 const pinia = createPinia()
 const app = createApp(App);
 app.use(pinia)
+app.directive('animateonscroll', AnimateOnScroll);
 app.use(router).mount("#app");
 app.use(PrimeVue, {
     theme: {
