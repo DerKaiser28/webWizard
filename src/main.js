@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import PrimeVue from 'primevue/config';
 import { createRouter, createWebHistory } from 'vue-router';
-import ToastService from 'primevue/toastservice';
-import Aura from '@primevue/themes/aura'
+import { createPinia } from 'pinia'
+import PrimeVue from 'primevue/config';
+import Theme from '@primevue/themes/aura';
 
 import home from './views/home.vue'
 import categories from './views/categories.vue'
@@ -21,18 +21,12 @@ const router = createRouter({
     routes,
 })
 
+const pinia = createPinia()
 const app = createApp(App);
+app.use(pinia)
 app.use(router).mount("#app");
-
 app.use(PrimeVue, {
     theme: {
-        preset: Aura,
-        options: {
-            prefix: 'p',
-            darkModeSelector: 'system',
-            cssLayer: false
-        }
+        preset: Theme
     }
- });
-
- app.use(ToastService);
+});
